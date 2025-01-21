@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OnlineRestaurant.TL.Templates
 {
-	public abstract class Service<TEntity> : IService<TEntity> where TEntity : class
+	public abstract class Service<TEntity, TCreateForm, TUpdateForm> : IService<TEntity, TCreateForm, TUpdateForm> where TEntity : class
 	{
 		private readonly IRepository<TEntity> _repo;
 		private readonly Func<TEntity, int> _idPredicate;
@@ -23,6 +23,13 @@ namespace OnlineRestaurant.TL.Templates
 		{
 			return _repo.Any(predicate);
 		}
+
+		public virtual TEntity? Create(TCreateForm form)
+		{
+			
+			return _repo.Create(form.ToEntity());
+		}
+
 		public virtual IEnumerable<TEntity> Get()
 		{
 			return _repo.Get();
@@ -43,13 +50,9 @@ namespace OnlineRestaurant.TL.Templates
 			return _repo.GetOne(predicate);
 		}
 
-		public virtual TEntity? Create(TEntity entity)
+		public virtual TEntity? Update(TUpdateForm form)
 		{
-			return _repo.Create(entity);
-		}
-
-		public virtual TEntity? Update(TEntity entity)
-		{
+			
 			return _repo.Update(entity);
 		}
 

@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccountingApp.BLL.Interfaces;
 using AccountingApp.DB.Entities;
 using AccountingApp.DB.Enums;
 
 namespace AccountingApp.BLL.Forms
 {
-    public class DetailForm
+    public class DetailForm : IConvertibleToEntity<Detail>
     {
         [Required]
         public decimal Amount { get; set; }
@@ -27,7 +28,7 @@ namespace AccountingApp.BLL.Forms
 
         [Required]
         public int TransactionTypeId { get; set; }
-    }
+	}
 
     public class DetailGetForm
     {

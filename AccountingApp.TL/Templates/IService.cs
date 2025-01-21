@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineRestaurant.TL.Templates
 {
-	public interface IService<TEntity> where TEntity : class
+	public interface IService<TEntity, TCreateForm, TUpdateForm> where TEntity : class
 	{
 		/// <summary>
 		/// Checks if any entity matches the given condition.
@@ -20,7 +20,7 @@ namespace OnlineRestaurant.TL.Templates
 		/// </summary>
 		/// <param name="entity">Entity to add.</param>
 		/// <returns>The added entity, or null.</returns>
-		TEntity? Create(TEntity entity);
+		TEntity? Create(TCreateForm form);
 
         /// <summary>
         /// Deletes an entity from the database.
@@ -60,7 +60,7 @@ namespace OnlineRestaurant.TL.Templates
 		/// </summary>
 		/// <param name="entity">Entity with updated values.</param>
 		/// <returns>The updated entity.</returns>
-		TEntity? Update(TEntity entity);
+		TEntity? Update(TUpdateForm form);
 
     }
 }

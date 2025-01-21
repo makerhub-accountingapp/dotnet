@@ -22,7 +22,7 @@ namespace AccountingApp.DB.Contexts
         public DbSet<Category> Category { get; set; } = null!;
         public DbSet<TransactionType> TransactionType { get; set; } = null!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new AccountConfiguration());

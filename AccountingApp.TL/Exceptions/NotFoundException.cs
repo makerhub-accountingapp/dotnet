@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountingApp.Tools.Exceptions
+namespace AccountingApp.TL.Exceptions
 {
     public class NotFoundException(string message) : Exception(message)
     {

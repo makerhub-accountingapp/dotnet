@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineRestaurant.Tools.Templates
+namespace OnlineRestaurant.TL.Templates
 {
 	public interface IRepository<TEntity> where TEntity : class
 	{

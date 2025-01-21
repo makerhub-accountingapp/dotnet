@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccountingApp.TL.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace OnlineRestaurant.Tools.Templates
+namespace OnlineRestaurant.TL.Templates
 {
 	public abstract class Service<TEntity> : IService<TEntity> where TEntity : class
 	{
@@ -25,6 +26,11 @@ namespace OnlineRestaurant.Tools.Templates
 		public virtual IEnumerable<TEntity> Get()
 		{
 			return _repo.Get();
+		}
+
+		public virtual IEnumerable<TEntity> Get(Func<TEntity, bool>? predicate)
+		{
+			return _repo.Get(predicate);
 		}
 
 		public virtual TEntity? GetById(int id)
@@ -51,5 +57,5 @@ namespace OnlineRestaurant.Tools.Templates
 		{
 			return _repo.Delete(entity);
 		}
-    }
+	}
 }

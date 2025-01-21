@@ -24,4 +24,8 @@
     <ProjectReference Include="..\AccountingApp.TL\AccountingApp.TL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappers\" />
+  </ItemGroup>
+
 </Project>

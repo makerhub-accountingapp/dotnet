@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineRestaurant.Tools.Templates
+namespace OnlineRestaurant.TL.Templates
 {
 	public interface IService<TEntity> where TEntity : class
 	{
@@ -33,6 +33,13 @@ namespace OnlineRestaurant.Tools.Templates
         /// </summary>
         /// <returns>A collection of matching entities.</returns>
         IEnumerable<TEntity> Get();
+
+		/// <summary>
+		/// Retrieves entities that match the given condition.
+		/// </summary>
+		/// <param name="predicate">Condition to filter entities (optional).</param>
+		/// <returns>A collection of matching entities.</returns>
+		IEnumerable<TEntity> Get(Func<TEntity, bool>? predicate);
 
 		/// <summary>
 		/// Retrieves a single entity that matches the condition.

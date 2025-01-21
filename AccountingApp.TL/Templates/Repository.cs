@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 
-namespace OnlineRestaurant.Tools.Templates
+namespace OnlineRestaurant.TL.Templates
 {
 	public abstract class RepositoryBase(DbContext context)
 	{

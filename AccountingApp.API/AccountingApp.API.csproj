@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccountingApp.BLL\AccountingApp.BLL.csproj" />
-    <ProjectReference Include="..\AccountingApp.DAL\AccountingApp.DAL.csproj" />
     <ProjectReference Include="..\AccountingApp.DB\AccountingApp.DB.csproj" />
     <ProjectReference Include="..\AccountingApp.TL\AccountingApp.TL.csproj" />
   </ItemGroup>

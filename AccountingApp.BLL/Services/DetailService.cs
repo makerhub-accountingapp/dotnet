@@ -23,15 +23,15 @@ namespace AccountingApp.BLL.Services
 			return base.Create(form, predicate);
 		}
 
-		public override IEnumerable<Detail> Get(Func<Detail, bool>? predicate)
+		public IEnumerable<Detail> Get(DetailGetForm form)
 		{
-			predicate = (d) => 
-				(detail.Name is null || d.Transaction.Name == detail.Name) &&
-				(detail.CategoryId is null || d.CategoryId == detail.CategoryId) &&
-				(detail.TransactionTypeId is null || d.TransactionTypeId == detail.TransactionTypeId) &&
-				(detail.Repetition is null || d.Transaction.Repetition == detail.Repetition) &&
-				(detail.StartDate is null || detail.EndDate is null) ||
-				(d.TransactionDate >= detail.StartDate && d.TransactionDate <= detail.EndDate);
+			Func<Detail, bool> predicate = (d) => 
+				(form.Name is null || d.Transaction.Name == form.Name) &&
+				(form.CategoryId is null || d.CategoryId == form.CategoryId) &&
+				(form.TransactionTypeId is null || d.TransactionTypeId == form.TransactionTypeId) &&
+				(form.Repetition is null || d.Transaction.Repetition == form.Repetition) &&
+				(form.StartDate is null || form.EndDate is null) ||
+				(d.TransactionDate >= form.StartDate && d.TransactionDate <= form.EndDate);
 
 			return base.Get(predicate);
 		}		

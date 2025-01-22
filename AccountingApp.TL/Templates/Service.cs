@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace OnlineRestaurant.TL.Templates
 {
 	public abstract class Service<TEntity, TCreateForm, TUpdateForm> : IService<TEntity, TCreateForm, TUpdateForm> 
-		where TEntity : class, IIdentifiable
+		where TEntity : class
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountingApp.TL.Exceptions
+namespace AccountingApp.TL.Templates
 {
-    public class NotFoundException(string message) : Exception(message)
-    {
-    }
+	public interface IIdentifiable
+	{
+		public int Id { get; set; }
+	}
 }

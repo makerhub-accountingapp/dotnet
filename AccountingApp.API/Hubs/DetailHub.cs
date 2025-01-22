@@ -6,17 +6,25 @@ using Microsoft.AspNetCore.SignalR;
 namespace AccountingApp.API.Hubs
 {
 	public class DetailHub(IDetailService service) : Hub
-	{
-		private IEnumerable<Detail> Details => service.Get();
-
-		public async Task Refresh()
+	{		
+		public async Task NotifyGet()
 		{
-			await Clients.All.SendAsync("GetDetails", Details);
+			await Clients.Caller.SendAsync("ReceiveGet", "Details retrieved");
 		}
 
-		public async Task Get()
+		public async Task NotifyCreate()
 		{
-			await Clients.Caller.SendAsync("GetDetails", Details);
+			await Clients.All.SendAsync("ReceiveCreate", "Detail created");
+		}
+
+		public async Task NotifyUpdate()
+		{
+			await Clients.All.SendAsync("ReceiveUpdate", "Detail updated");
+		}
+
+		public async Task NotifyDelete()
+		{
+			await Clients.All.SendAsync("ReceiveDelete", "Detail deleted");
 		}
 	}
 }

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccountingApp.TL.Templates;
 
 namespace OnlineRestaurant.TL.Templates
 {
-	public interface IService<TEntity, TCreateForm, TUpdateForm> where TEntity : class
+	public interface IService<TEntity, TCreateForm, TUpdateForm>
+		where TEntity : class
+		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
+		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{
 		/// <summary>
 		/// Checks if any entity matches the given condition.
@@ -19,20 +23,22 @@ namespace OnlineRestaurant.TL.Templates
 		/// Adds a new entity to the database.
 		/// </summary>
 		/// <param name="entity">Entity to add.</param>
+		/// <param name="predicate">Condition to test entities.</param>
 		/// <returns>The added entity, or null.</returns>
-		TEntity? Create(TCreateForm form);
+		TEntity? Create(TCreateForm form, Func<TEntity, bool>? predicate);
 
-        /// <summary>
-        /// Deletes an entity from the database.
-        /// </summary>
-        /// <param name="entity">Entity to remove.</param>
-        /// <returns>The removed entity.</returns>
-        TEntity? Delete(TEntity entity);
-        /// <summary>
-        /// Retrieves all.
-        /// </summary>
-        /// <returns>A collection of matching entities.</returns>
-        IEnumerable<TEntity> Get();
+		/// <summary>
+		/// Deletes an entity from the database.
+		/// </summary>
+		/// <param name="id">Id to remove.</param>
+		/// <returns>The removed entity.</returns>
+		TEntity? Delete(int id);
+
+		/// <summary>
+		/// Retrieves all.
+		/// </summary>
+		/// <returns>A collection of matching entities.</returns>
+		IEnumerable<TEntity> Get();
 
 		/// <summary>
 		/// Retrieves entities that match the given condition.

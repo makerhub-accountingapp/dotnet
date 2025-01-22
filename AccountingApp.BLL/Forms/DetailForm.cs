@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using AccountingApp.BLL.Interfaces;
 using AccountingApp.DB.Entities;
 using AccountingApp.DB.Enums;
+using AccountingApp.TL.Templates;
 
 namespace AccountingApp.BLL.Forms
 {
-    public class DetailForm : IConvertibleToEntity<Detail>
+    public class DetailCreateForm : IConvertibleToEntity<Detail, DetailCreateForm>
     {
         [Required]
         public decimal Amount { get; set; }
@@ -28,6 +29,19 @@ namespace AccountingApp.BLL.Forms
 
         [Required]
         public int TransactionTypeId { get; set; }
+
+		public Detail ToEntity(DetailCreateForm form)
+		{
+			return new Detail
+			{
+				Amount = form.Amount,
+				TransactionDate = form.TransactionDate,
+				Note = form.Note,
+				TransactionId = form.TransactionId,
+				CategoryId = form.CategoryId,
+				TransactionTypeId = form.TransactionTypeId,
+			};
+		}
 	}
 
     public class DetailGetForm
@@ -40,7 +54,7 @@ namespace AccountingApp.BLL.Forms
         public DateTime? EndDate { get; set; }
     }
 
-    public class DetailUpdateForm
+    public class DetailUpdateForm : IConvertibleToEntity<Detail, DetailUpdateForm>, IIdentifiable
     {
         [Required]
         public int Id { get; set; }
@@ -61,5 +75,19 @@ namespace AccountingApp.BLL.Forms
 
         [Required]
         public int TransactionTypeId { get; set; }
-    }
+
+		public Detail ToEntity(DetailUpdateForm form)
+		{
+			return new Detail
+			{
+				Id = form.Id,
+				Amount = form.Amount,
+				TransactionDate = form.TransactionDate,
+				Note = form.Note,
+				TransactionId = form.TransactionId,
+				CategoryId = form.CategoryId,
+				TransactionTypeId = form.TransactionTypeId,
+			};
+		}
+	}
 }

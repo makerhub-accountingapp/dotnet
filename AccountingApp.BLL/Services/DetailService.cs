@@ -13,60 +13,27 @@ using OnlineRestaurant.TL.Templates;
 
 namespace AccountingApp.BLL.Services
 {
-	public class DetailService(IDetailRepository repo) : Service<Detail>(repo, detail => detail.Id), IDetailService
+	public class DetailService(IDetailRepository repo) : Service<Detail, DetailCreateForm, DetailUpdateForm>(repo, detail => detail.Id), IDetailService
 	{
-		public Detail? Create(DetailForm detail)
+		public override Detail? Create(DetailCreateForm form, Func<Detail, bool>? predicate)
 		{
-			// Checks if the detail already exists
-			if (repo.Any(d =>
-				d.TransactionId == detail.TransactionId &&
-				d.TransactionDate == detail.TransactionDate))
-			{
-				throw new AlreadyExistException("Transaction detail already registered.");
-			}
+			predicate = (d) => d.TransactionId == form.TransactionId &&
+				d.TransactionDate == form.TransactionDate;
 
-			return repo.Create(detail.ToEntity());
+			return base.Create(form, predicate);
 		}
 
-		public void Delete(int id)
+		public override IEnumerable<Detail> Get(Func<Detail, bool>? predicate)
 		{
-			// Checks if the detail exists
-			Detail? detailToDelete = repo.GetOne(d => d.Id == id);
-
-			if (detailToDelete is null)
-			{
-				throw new NotFoundException("Transaction detail not found.");
-
-			}
-
-			repo.Delete(detailToDelete);
-		}
-
-		public IEnumerable<Detail> Get(DetailGetForm detail)
-		{
-			IEnumerable<Detail> foundDetails = repo.Get(d =>
+			predicate = (d) => 
 				(detail.Name is null || d.Transaction.Name == detail.Name) &&
 				(detail.CategoryId is null || d.CategoryId == detail.CategoryId) &&
 				(detail.TransactionTypeId is null || d.TransactionTypeId == detail.TransactionTypeId) &&
 				(detail.Repetition is null || d.Transaction.Repetition == detail.Repetition) &&
-				(detail.StartDate is null || detail.EndDate is null ||
-				(d.TransactionDate >= detail.StartDate && d.TransactionDate <= detail.EndDate))
-			);
+				(detail.StartDate is null || detail.EndDate is null) ||
+				(d.TransactionDate >= detail.StartDate && d.TransactionDate <= detail.EndDate);
 
-			return foundDetails;
-		}
-
-		public Detail? Update(DetailUpdateForm detail)
-		{
-			// Checks if the detail exists
-			Detail? foundDetail = repo.GetOne(d => d.Id == detail.Id);
-
-			if (foundDetail is null)
-			{
-				throw new NotFoundException("Transaction detail not found");
-			}
-
-			return Update(detail.ToEntity());
-		}
+			return base.Get(predicate);
+		}		
 	}
 }

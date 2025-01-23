@@ -1,18 +1,22 @@
 ﻿using AccountingApp.API.Hubs;
+using AccountingApp.API.Templates;
 using AccountingApp.BLL.Forms;
 using AccountingApp.BLL.Interfaces;
+using AccountingApp.BLL.Services;
 using AccountingApp.DB.Entities;
 using AccountingApp.DB.Enums;
 using AccountingApp.TL.Exceptions;
+using AccountingApp.TL.Templates;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using OnlineRestaurant.TL.Templates;
 
 namespace AccountingApp.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class DetailController(IHubContext<DetailHub> hub, IDetailService service) : ControllerBase
+	public class DetailController(IDetailService service, IHubContext<DetailHub> hub) : GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub)
 	{
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
@@ -20,7 +24,7 @@ namespace AccountingApp.API.Controllers
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
 		{
-			DetailGetForm predicate = new DetailGetForm()
+			DetailGetForm form = new DetailGetForm()
 			{
 				Name = name,
 				CategoryId = categoryId,
@@ -32,7 +36,7 @@ namespace AccountingApp.API.Controllers
 
 			try
 			{
-				IEnumerable<Detail> foundDetails = service.Get(predicate);
+				IEnumerable<Detail> foundDetails = service.Get(form);
 				await hub.Clients.All.SendAsync("ReceiveGet", foundDetails);
 
 				return Ok(foundDetails);

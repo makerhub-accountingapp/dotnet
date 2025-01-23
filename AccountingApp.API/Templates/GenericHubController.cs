@@ -15,15 +15,40 @@ namespace AccountingApp.API.Templates
 	public class GenericHubController<TEntity, TService, TCreateForm, TUpdateForm, THub>(IService<TEntity, TCreateForm, TUpdateForm> service, IHubContext<THub> hub) : ControllerBase, IGenericHubController<TEntity, TCreateForm, TUpdateForm, THub>
 		where TEntity : class, IIdentifiable
 		where TService : class, IService<TEntity, TCreateForm, TUpdateForm>
-		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>, IIdentifiable
+		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 		where THub : Hub
 	{
+		[HttpPost]
+		[ProducesResponseType(StatusCodes.Status201Created)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public async Task<IActionResult> NotifyCreate([FromBody] TCreateForm form, [FromQuery] Func<TEntity, bool>? predicate)
+		{
+			try
+			{
+				TEntity? createdEntity = service.Create(form, predicate);
+
+				if (createdEntity is null) throw new OperationFailedException("Creation failed.");
+				await hub.Clients.All.SendAsync($"ReceiveCreate{typeof(TEntity).Name}", createdEntity);
+
+				return Created($"api/detail/{createdEntity.Id}", createdEntity);
+			}
+			catch (OperationFailedException ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
 		[HttpDelete("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> Delete([FromRoute] int id)
+		public async Task<IActionResult?> NotifyDelete([FromRoute] int id)
 		{
 			try
 			{
@@ -52,7 +77,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> Get()
+		public async Task<IActionResult> NotifyGet()
 		{
 			try
 			{
@@ -71,12 +96,12 @@ namespace AccountingApp.API.Templates
 				return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
 			}
 		}
-
+		
 		[HttpGet("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> GetById([FromRoute] int id)
+		public async Task<IActionResult> NotifyGetById([FromRoute] int id)
 		{
 			try
 			{
@@ -97,7 +122,7 @@ namespace AccountingApp.API.Templates
 				return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
 			}
 		}
-
+		
 		[HttpPut]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -122,51 +147,6 @@ namespace AccountingApp.API.Templates
 			{
 				return BadRequest(ex.Message);
 			}
-		}
-
-		[HttpPost]
-		[ProducesResponseType(StatusCodes.Status201Created)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
-		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<TEntity?> NotifyCreate([FromBody]TCreateForm form, Func<TEntity, bool>? predicate)
-		{
-			try
-			{
-				TEntity? createdEntity = service.Create(form, predicate);
-
-				if (createdEntity is null) throw new OperationFailedException("Creation failed.");
-				await hub.Clients.All.SendAsync($"ReceiveCreate{typeof(TEntity).Name}", createdEntity);
-
-				return Created($"api/detail/{createdEntity.Id}", createdEntity);
-			}
-			catch (OperationFailedException ex)
-			{
-				return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-			}
-			catch (Exception ex)
-			{
-				return BadRequest(ex.Message);
-			}
-		}
-
-		public Task<TEntity?> NotifyDelete(int id)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Task<IEnumerable<TEntity>> NotifyGet()
-		{
-			throw new NotImplementedException();
-		}
-
-		public Task<TEntity?> NotifyGetById(int id)
-		{
-			throw new NotImplementedException();
-		}
-
-		Task<TEntity?> NotifyUpdate(TUpdateForm form)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

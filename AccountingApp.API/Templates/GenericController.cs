@@ -15,14 +15,14 @@ namespace AccountingApp.API.Templates
 	public class GenericController<TEntity, TService, TCreateForm, TUpdateForm>(IService<TEntity, TCreateForm, TUpdateForm> service) : ControllerBase, IGenericController<TEntity, TCreateForm, TUpdateForm>
 		where TEntity : class, IIdentifiable
 		where TService : class, IService<TEntity, TCreateForm, TUpdateForm>
-		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>, IIdentifiable
+		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{
 		[HttpPost]
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public IActionResult Create([FromBody] TCreateForm form, Func<TEntity, bool>? predicate)
+		public IActionResult Create([FromBody] TCreateForm form, [FromQuery] Func<TEntity, bool>? predicate)
 		{
 			try
 			{

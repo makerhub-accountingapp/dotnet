@@ -18,7 +18,16 @@ namespace OnlineRestaurant.TL.Templates
 		}
 	}
 
-	public abstract class Repository<TEntity>(DbContext context) : RepositoryBase(context), IRepository<TEntity> where TEntity : class
+	public abstract class Repository<TEntity>
+
+		// Dependecy injections
+		(DbContext context)
+
+		// Inheritances
+		: RepositoryBase(context), IRepository<TEntity>
+
+		// Generic class characteristics
+		where TEntity : class
 	{
 		protected DbSet<TEntity> Entities => _context.Set<TEntity>();
 

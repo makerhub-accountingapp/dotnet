@@ -9,8 +9,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OnlineRestaurant.TL.Templates
 {
-	public abstract class Service<TEntity, TCreateForm, TUpdateForm>(IRepository<TEntity> repo) 
-		: IService<TEntity, TCreateForm, TUpdateForm> 
+	public abstract class Service<TEntity, TCreateForm, TUpdateForm>
+
+		// Dependecy injections
+		(IRepository<TEntity> repo)
+
+		// Inheritances
+		: IService<TEntity, TCreateForm, TUpdateForm>
+
+		// Generic class characteristics
 		where TEntity : class, IIdentifiable
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable

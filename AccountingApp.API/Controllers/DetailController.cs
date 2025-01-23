@@ -16,7 +16,9 @@ namespace AccountingApp.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class DetailController(IDetailService service, IHubContext<DetailHub> hub) : GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub)
+	public class DetailController
+		(IDetailService service, IHubContext<DetailHub> hub) 
+		: GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub)
 	{
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]

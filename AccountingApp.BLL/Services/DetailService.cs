@@ -12,7 +12,9 @@ using OnlineRestaurant.TL.Templates;
 
 namespace AccountingApp.BLL.Services
 {
-	public class DetailService(IDetailRepository repo) : Service<Detail, DetailCreateForm, DetailUpdateForm>(repo), IDetailService
+	public class DetailService
+		(IDetailRepository repo) 
+		: Service<Detail, DetailCreateForm, DetailUpdateForm>(repo), IDetailService
 	{
 		public override Detail? Create(DetailCreateForm form, Func<Detail, bool>? predicate)
 		{

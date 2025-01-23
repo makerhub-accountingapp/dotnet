@@ -38,17 +38,17 @@ builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
 	options.AllowCredentials()
 	.AllowAnyHeader()
 	.AllowAnyMethod()
-	.WithOrigins("http://localhost:4200", "http://192.168.0.201:4200");
+	.WithOrigins("http://localhost:4200");
 }));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 app.UseHttpsRedirection();
 

@@ -20,7 +20,7 @@ namespace AccountingApp.API.Controllers
 		(IDetailService service, IHubContext<DetailHub> hub) 
 		: GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub)
 	{
-		[HttpGet]
+		[HttpGet("filtered")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]

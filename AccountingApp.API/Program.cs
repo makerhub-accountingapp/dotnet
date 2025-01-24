@@ -33,6 +33,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configures external access
+builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
+{
+    options.AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod();
+}));
+
 //builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
 //{
 //	options.AllowCredentials()
@@ -40,13 +47,6 @@ builder.Services.AddSwaggerGen();
 //	.AllowAnyMethod()
 //	.WithOrigins("http://localhost:4200");
 //}));
-
-builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
-{
-	options.AllowAnyOrigin()
-	.AllowAnyHeader()
-	.AllowAnyMethod();
-}));
 
 var app = builder.Build();
 

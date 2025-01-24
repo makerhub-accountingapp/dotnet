@@ -31,7 +31,7 @@ namespace AccountingApp.API.Controllers
 			(service, hub), 
 		IDetailController
 	{
-		[HttpGet]
+		[HttpGet("filtered")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]

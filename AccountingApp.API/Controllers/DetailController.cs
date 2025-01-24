@@ -18,18 +18,8 @@ namespace AccountingApp.API.Controllers
 	[Route("api/[controller]")]
 	[ApiController]
 	public class DetailController
-
-        /********** Dependecy injections **********/
-
-        (IDetailService service, 
-		IHubContext<DetailHub> hub)
-
-        /********** Inheritance **********/
-
-        : GenericHubController
-			<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>
-			(service, hub), 
-		IDetailController
+        (IDetailService service, IHubContext<DetailHub> hub)
+        : GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub), IDetailController
 	{
 		[HttpGet("filtered")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]

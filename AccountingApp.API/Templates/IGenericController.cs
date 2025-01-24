@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace AccountingApp.API.Templates
 {
 	public interface IGenericController<TEntity, TCreateForm, TUpdateForm>
-		where TEntity : class, IIdentifiable
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{

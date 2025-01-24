@@ -1,4 +1,5 @@
 ﻿using AccountingApp.API.Hubs;
+using AccountingApp.API.Interfaces;
 using AccountingApp.API.Templates;
 using AccountingApp.BLL.Forms;
 using AccountingApp.BLL.Interfaces;
@@ -17,14 +18,24 @@ namespace AccountingApp.API.Controllers
 	[Route("api/[controller]")]
 	[ApiController]
 	public class DetailController
-		(IDetailService service, IHubContext<DetailHub> hub) 
-		: GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub)
+
+        /********** Dependecy injections **********/
+
+        (IDetailService service, 
+		IHubContext<DetailHub> hub)
+
+        /********** Inheritance **********/
+
+        : GenericHubController
+			<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>
+			(service, hub), 
+		IDetailController
 	{
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
+		public async Task<IActionResult> NotifyGet(string? name, int? categoryId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
 		{
 			DetailGetForm form = new DetailGetForm()
 			{

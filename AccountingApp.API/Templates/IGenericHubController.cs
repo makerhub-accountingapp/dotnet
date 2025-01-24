@@ -6,7 +6,10 @@ using OnlineRestaurant.TL.Templates;
 namespace AccountingApp.API.Templates
 {
 	public interface IGenericHubController<TEntity, TCreateForm, TUpdateForm, THub>
-		where TEntity : class, IIdentifiable
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 		where THub : Hub

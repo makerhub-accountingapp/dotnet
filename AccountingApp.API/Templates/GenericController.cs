@@ -14,14 +14,18 @@ namespace AccountingApp.API.Templates
 	[ApiController]
 	public class GenericController<TEntity, TService, TCreateForm, TUpdateForm>
 
-		// Dependecy injections
+		/********** Dependecy injections **********/
+
 		(IService<TEntity, TCreateForm, TUpdateForm> service)
 
-		// Inheritances
-		: ControllerBase, IGenericController<TEntity, TCreateForm, TUpdateForm>
+        /********** Inheritance **********/
 
-		// Generic class characteristics
-		where TEntity : class, IIdentifiable
+        : ControllerBase, 
+		IGenericController<TEntity, TCreateForm, TUpdateForm>
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TService : class, IService<TEntity, TCreateForm, TUpdateForm>
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable

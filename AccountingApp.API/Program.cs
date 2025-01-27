@@ -35,19 +35,26 @@ builder.Services.AddSwaggerGen();
 // Configures external access
 builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
 {
-	options.AllowCredentials()
+	options.AllowAnyOrigin()
 	.AllowAnyHeader()
-	.AllowAnyMethod()
-	.WithOrigins("http://localhost:4200");
+	.AllowAnyMethod();
 }));
+
+//builder.Services.AddCors(c => c.AddDefaultPolicy(options =>
+//{
+//	options.AllowCredentials()
+//	.AllowAnyHeader()
+//	.AllowAnyMethod()
+//	.WithOrigins("http://localhost:4200");
+//}));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
+//	app.UseSwagger();
+//	app.UseSwaggerUI();
 //}
 
 app.UseHttpsRedirection();

@@ -15,7 +15,7 @@ namespace AccountingApp.API.Templates
 		/// Adds a new entity to the database.
 		/// </summary>
 		/// <param name="entity">Entity to add.</param>
-		/// <param name="predicate">Condition to test entities.</param>
+		/// <param name="predicate">Condition to test entities if the data already exists in the DB.</param>
 		/// <returns>The added entity, or null.</returns>
 		IActionResult Create([FromBody]TCreateForm form, [FromQuery]Func<TEntity, bool>? predicate);
 

@@ -18,7 +18,7 @@ namespace AccountingApp.API.Templates
 		/// Asynchronously adds a new entity to the database.
 		/// </summary>
 		/// <param name="form">The form containing the data to create the entity.</param>
-		/// <param name="predicate">Optional condition to validate before adding the entity.</param>
+		/// <param name="predicate">Optional condition to validate before adding the entity if the data already exists in the DB.</param>
 		/// <returns>A task representing the asynchronous operation. The task result contains the added entity, or null if the addition failed.</returns>
 		Task<IActionResult> NotifyCreate([FromBody]TCreateForm form, [FromQuery]Func<TEntity, bool>? predicate);
 

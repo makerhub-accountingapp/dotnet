@@ -14,14 +14,20 @@ namespace AccountingApp.API.Templates
 	[ApiController]
 	public class GenericHubController<TEntity, TService, TCreateForm, TUpdateForm, THub>
 
-		// Dependecy injections
-		(IService<TEntity, TCreateForm, TUpdateForm> service, IHubContext<THub> hub) 
+        /********** Dependecy injections **********/
 
-		// Inheritances
-		: ControllerBase, IGenericHubController<TEntity, TCreateForm, TUpdateForm, THub>
+        (IService<TEntity, TCreateForm, TUpdateForm> service, 
+		IHubContext<THub> hub)
 
-		// Generic class characteristics
-		where TEntity : class, IIdentifiable
+        /********** Inheritance **********/
+
+        : ControllerBase, 
+		IGenericHubController
+			<TEntity, TCreateForm, TUpdateForm, THub>
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TService : class, IService<TEntity, TCreateForm, TUpdateForm>
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable

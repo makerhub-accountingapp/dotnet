@@ -11,14 +11,17 @@ namespace OnlineRestaurant.TL.Templates
 {
 	public abstract class Service<TEntity, TCreateForm, TUpdateForm>
 
-		// Dependecy injections
-		(IRepository<TEntity> repo)
+        /********** Dependecy injections **********/
 
-		// Inheritances
-		: IService<TEntity, TCreateForm, TUpdateForm>
+        (IRepository<TEntity> repo)
 
-		// Generic class characteristics
-		where TEntity : class, IIdentifiable
+        /********** Inheritance **********/
+
+        : IService<TEntity, TCreateForm, TUpdateForm>
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{

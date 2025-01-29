@@ -37,7 +37,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> NotifyCreate([FromBody] TCreateForm form, [FromQuery] Func<TEntity, bool>? predicate)
+		public async Task<IActionResult> Create([FromBody] TCreateForm form, [FromQuery] Func<TEntity, bool>? predicate)
 		{
 			try
 			{
@@ -62,7 +62,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult?> NotifyDelete([FromRoute] int id)
+		public async Task<IActionResult?> Delete([FromRoute] int id)
 		{
 			try
 			{
@@ -91,7 +91,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> NotifyGet()
+		public async Task<IActionResult> Get()
 		{
 			try
 			{
@@ -115,7 +115,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> NotifyGetById([FromRoute] int id)
+		public async Task<IActionResult> GetById([FromRoute] int id)
 		{
 			try
 			{
@@ -141,7 +141,7 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> NotifyUpdate([FromBody] TUpdateForm form)
+		public async Task<IActionResult> Update([FromBody] TUpdateForm form)
 		{
 			try
 			{

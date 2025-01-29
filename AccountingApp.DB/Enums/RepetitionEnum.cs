@@ -8,7 +8,7 @@ namespace AccountingApp.DB.Enums
 {
     public enum RepetitionEnum
     {
-        None,
+        None = 1,
         Daily,
         Weekly,
         Monthly,

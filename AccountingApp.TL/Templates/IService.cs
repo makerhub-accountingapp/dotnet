@@ -19,13 +19,20 @@ namespace OnlineRestaurant.TL.Templates
 		/// <returns>True if any entity matches, otherwise false.</returns>
 		bool Any(Func<TEntity, bool> predicate);
 
-		/// <summary>
-		/// Adds a new entity to the database.
-		/// </summary>
-		/// <param name="entity">Entity to add.</param>
-		/// <param name="predicate">Condition to test entities.</param>
-		/// <returns>The added entity, or null.</returns>
-		TEntity? Create(TCreateForm form, Func<TEntity, bool>? predicate);
+        /// <summary>
+        /// Adds a new entity to the database.
+        /// </summary>
+        /// <param name="entity">Entity to add.</param>
+        /// <returns>The added entity, or null.</returns>
+        TEntity? Create(TCreateForm form);
+
+        /// <summary>
+        /// Adds a new entity to the database.
+        /// </summary>
+        /// <param name="entity">Entity to add.</param>
+        /// <param name="predicate">Condition to test entities if the data already exists in the DB.</param>
+        /// <returns>The added entity, or null.</returns>
+        TEntity? Create(TCreateForm form, Func<TEntity, bool> predicate);
 
 		/// <summary>
 		/// Deletes an entity from the database.

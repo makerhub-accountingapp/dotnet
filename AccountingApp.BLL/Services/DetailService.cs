@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AccountingApp.BLL.Forms;
 using AccountingApp.BLL.Interfaces;
-using AccountingApp.BLL.Mappers;
 using AccountingApp.DAL.Interfaces;
 using AccountingApp.DB.Entities;
 using AccountingApp.TL.Exceptions;
@@ -13,11 +12,14 @@ using OnlineRestaurant.TL.Templates;
 
 namespace AccountingApp.BLL.Services
 {
-	public class DetailService(IDetailRepository repo) : Service<Detail, DetailCreateForm, DetailUpdateForm>(repo, detail => detail.Id), IDetailService
+	public class DetailService
+		(IDetailRepository repo) 
+		: Service<Detail, DetailCreateForm, DetailUpdateForm>(repo), IDetailService
 	{
-		public override Detail? Create(DetailCreateForm form, Func<Detail, bool>? predicate)
+		public override Detail? Create(DetailCreateForm form)
 		{
-			predicate = (d) => d.TransactionId == form.TransactionId &&
+			Func<Detail, bool> predicate = (d) => 
+				d.TransactionId == form.TransactionId &&
 				d.TransactionDate == form.TransactionDate;
 
 			return base.Create(form, predicate);

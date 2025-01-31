@@ -9,37 +9,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OnlineRestaurant.TL.Templates
 {
-	public abstract class Service<TEntity, TCreateForm, TUpdateForm> : IService<TEntity, TCreateForm, TUpdateForm> 
-		where TEntity : class
+	public abstract class Service<TEntity, TCreateForm, TUpdateForm>
+
+        /********** Dependecy injections **********/
+
+        (IRepository<TEntity> repo)
+
+        /********** Inheritance **********/
+
+        : IService<TEntity, TCreateForm, TUpdateForm>
+
+        /********** Generic characteristics **********/
+
+        where TEntity : class, IIdentifiable
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 	{
-		private readonly IRepository<TEntity> _repo;
-		private readonly Func<TEntity, int> _idPredicate;
-
-		protected Service(IRepository<TEntity> repo, Func<TEntity, int> idPredicate)
-		{
-			_repo = repo;
-			_idPredicate = idPredicate;
-		}
-
 		public virtual bool Any(Func<TEntity, bool> predicate)
 		{
-			return _repo.Any(predicate);
+			return repo.Any(predicate);
 		}
 
-		public virtual TEntity? Create(TCreateForm form, Func<TEntity, bool>? predicate)
+		public virtual TEntity? Create(TCreateForm form)
 		{
-			// Checks if the detail exists
-			if (predicate is not null && Any(predicate))
-			{
-				throw new AlreadyExistException($"{ typeof(TEntity).Name } already registered.");
-			}
-
-			return _repo.Create(form.ToEntity(form));
+			return repo.Create(form.ToEntity(form));
 		}
 
-		public virtual TEntity? Delete(int id)
+        public virtual TEntity? Create(TCreateForm form, Func<TEntity, bool> predicate)
+        {
+            // Checks if the detail exists
+            if (Any(predicate))
+            {
+                throw new AlreadyExistException($"{typeof(TEntity).Name} already registered.");
+            }
+
+            return repo.Create(form.ToEntity(form));
+        }
+
+        public virtual TEntity? Delete(int id)
 		{
 			// Checks if the detail exists
 			TEntity? entityToDelete = GetById(id);
@@ -49,27 +56,27 @@ namespace OnlineRestaurant.TL.Templates
 				throw new NotFoundException($"{ typeof(TEntity).Name } not found.");
 			}
 
-			return _repo.Delete(entityToDelete);
+			return repo.Delete(entityToDelete);
 		}
 
 		public virtual IEnumerable<TEntity> Get()
 		{
-			return _repo.Get();
+			return repo.Get();
 		}
 
 		public virtual IEnumerable<TEntity> Get(Func<TEntity, bool>? predicate)
 		{
-			return _repo.Get(predicate);
+			return repo.Get(predicate);
 		}
 
 		public virtual TEntity? GetById(int id)
 		{
-			return _repo.GetOne(entity => _idPredicate(entity) == id);
+			return repo.GetOne(entity => entity.Id == id);
 		}
 		
 		public virtual TEntity? GetOne(Func<TEntity, bool> predicate)
 		{
-			return _repo.GetOne(predicate);
+			return repo.GetOne(predicate);
 		}
 
 		public virtual TEntity? Update(TUpdateForm form)
@@ -82,7 +89,7 @@ namespace OnlineRestaurant.TL.Templates
 				throw new NotFoundException($"{ typeof(TEntity).Name } not found.");
 			}
 
-			return _repo.Update(form.ToEntity(form));
+			return repo.Update(form.ToEntity(form));
 		}
 	}
 }

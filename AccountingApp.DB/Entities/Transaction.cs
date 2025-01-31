@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccountingApp.DB.Enums;
+using AccountingApp.TL.Templates;
 
 namespace AccountingApp.DB.Entities
 {
-    public class Transaction
+    public class Transaction : IIdentifiable
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

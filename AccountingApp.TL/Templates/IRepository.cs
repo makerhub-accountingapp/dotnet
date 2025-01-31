@@ -41,7 +41,7 @@ namespace OnlineRestaurant.TL.Templates
 		/// </summary>
 		/// <param name="predicate">Condition to filter entities (optional).</param>
 		/// <returns>A collection of matching entities.</returns>
-		IEnumerable<TEntity> Get(Func<TEntity, bool>? predicate);
+		IEnumerable<TEntity> Get(Func<TEntity, bool> predicate);
 
 		/// <summary>
 		/// Retrieves a single entity that matches the condition.

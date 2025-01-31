@@ -34,11 +34,11 @@ namespace AccountingApp.API.Templates
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public IActionResult Create([FromBody] TCreateForm form, [FromQuery] Func<TEntity, bool>? predicate)
+		public IActionResult Create([FromBody] TCreateForm form)
 		{
 			try
 			{
-				TEntity? createdEntity = service.Create(form, predicate);
+				TEntity? createdEntity = service.Create(form);
 
 				if (createdEntity is null) throw new OperationFailedException("Creation failed.");
 

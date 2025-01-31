@@ -13,12 +13,14 @@ namespace AccountingApp.DAL.Repositories
 {
 	public class DetailRepository(MainContext context) : Repository<Detail>(context), IDetailRepository
 	{
-		public override IEnumerable<Detail> Get(Func<Detail, bool>? predicate)
+        public override IEnumerable<Detail> Get()
+        {
+                return Entities.Include(d => d.Transaction);
+        }
+
+        public override IEnumerable<Detail> Get(Func<Detail, bool> predicate)
 		{
-			if (predicate is not null)
-				return Entities.Include(d => d.Transaction).Where(predicate);
-			else
-				return Entities.Include(d => d.Transaction);
+			return Entities.Include(d => d.Transaction).Where(predicate);
 		}
 
 		public override Detail? GetOne(Func<Detail, bool> predicate)

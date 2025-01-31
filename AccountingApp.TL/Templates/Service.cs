@@ -30,18 +30,23 @@ namespace OnlineRestaurant.TL.Templates
 			return repo.Any(predicate);
 		}
 
-		public virtual TEntity? Create(TCreateForm form, Func<TEntity, bool>? predicate)
+		public virtual TEntity? Create(TCreateForm form)
 		{
-			// Checks if the detail exists
-			if (predicate is not null && Any(predicate))
-			{
-				throw new AlreadyExistException($"{ typeof(TEntity).Name } already registered.");
-			}
-
 			return repo.Create(form.ToEntity(form));
 		}
 
-		public virtual TEntity? Delete(int id)
+        public virtual TEntity? Create(TCreateForm form, Func<TEntity, bool> predicate)
+        {
+            // Checks if the detail exists
+            if (Any(predicate))
+            {
+                throw new AlreadyExistException($"{typeof(TEntity).Name} already registered.");
+            }
+
+            return repo.Create(form.ToEntity(form));
+        }
+
+        public virtual TEntity? Delete(int id)
 		{
 			// Checks if the detail exists
 			TEntity? entityToDelete = GetById(id);

@@ -16,9 +16,10 @@ namespace AccountingApp.BLL.Services
 		(IDetailRepository repo) 
 		: Service<Detail, DetailCreateForm, DetailUpdateForm>(repo), IDetailService
 	{
-		public override Detail? Create(DetailCreateForm form, Func<Detail, bool>? predicate)
+		public override Detail? Create(DetailCreateForm form)
 		{
-			predicate = (d) => d.TransactionId == form.TransactionId &&
+			Func<Detail, bool> predicate = (d) => 
+				d.TransactionId == form.TransactionId &&
 				d.TransactionDate == form.TransactionDate;
 
 			return base.Create(form, predicate);

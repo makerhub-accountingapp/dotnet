@@ -57,7 +57,7 @@ namespace OnlineRestaurant.TL.Templates
 			return Entities;
 		}
 
-		public virtual IEnumerable<TEntity> Get(Func<TEntity, bool>? predicate)
+		public virtual IEnumerable<TEntity> Get(Func<TEntity, bool> predicate)
 		{
 			return predicate is null ?
 				Entities : Entities.Where(predicate);

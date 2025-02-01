@@ -26,6 +26,9 @@ builder.Services.AddControllers()
 builder.Services.AddScoped<IDetailRepository, DetailRepository>();
 builder.Services.AddScoped<IDetailService, DetailService>();
 
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
 builder.Services.AddSignalR();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

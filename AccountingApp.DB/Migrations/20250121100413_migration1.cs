@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AccountingApp.DB.Migrations
 {
     /// <inheritdoc />
-    public partial class migration1 : Migration
+    public partial class Migration1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

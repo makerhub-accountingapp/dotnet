@@ -5,7 +5,7 @@
 namespace AccountingApp.DB.Migrations
 {
     /// <inheritdoc />
-    public partial class migration3 : Migration
+    public partial class Migration3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

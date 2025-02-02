@@ -19,7 +19,7 @@ namespace AccountingApp.API.Controllers
 	[ApiController]
 	public class DetailController
         (IDetailService service, IHubContext<DetailHub> hub)
-        : GenericHubController<Detail, IDetailService, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub), IDetailController
+        : GenericHubController<Detail, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub), IDetailController
 	{
 		[HttpGet("filtered")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]

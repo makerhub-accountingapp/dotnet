@@ -11,7 +11,7 @@ namespace AccountingApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TransactionController(ITransactionService service) : GenericController<Transaction, TransactionCreateForm, TransactionUpdateForm>(service), ITransactionController
+    public class TransactionTypeController(ITransactionTypeService service) : GenericController<TransactionType, TransactionTypeCreateForm, TransactionTypeUpdateForm>(service), ITransactionController
     {
     }
 }

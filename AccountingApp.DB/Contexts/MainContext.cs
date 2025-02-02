@@ -128,7 +128,17 @@ namespace AccountingApp.DB.Contexts
                 new Detail { Id = 46, Amount = -35.00m, TransactionDate = new DateTime(2024, 5, 8, 18, 0, 0), Note = "Netflix subscription fee", TransactionId = 7, CategoryId = 7, TransactionTypeId = 2 },
                 new Detail { Id = 47, Amount = -120.00m, TransactionDate = new DateTime(2024, 5, 10, 17, 30, 0), Note = "Charity donation", TransactionId = 8, CategoryId = 8, TransactionTypeId = 9 },
                 new Detail { Id = 48, Amount = -1000.00m, TransactionDate = new DateTime(2024, 5, 12, 14, 0, 0), Note = "April house rent", TransactionId = 9, CategoryId = 9, TransactionTypeId = 2 },
-                new Detail { Id = 49, Amount = -450.00m, TransactionDate = new DateTime(2024, 5, 18, 19, 0, 0), Note = "Car insurance payment", TransactionId = 4, CategoryId = 4, TransactionTypeId = 2 }
+                new Detail { Id = 49, Amount = -450.00m, TransactionDate = new DateTime(2024, 5, 18, 19, 0, 0), Note = "Car insurance payment", TransactionId = 4, CategoryId = 4, TransactionTypeId = 2 },
+                new Detail { Id = 50, Amount = -120.00m, TransactionDate = new DateTime(2025, 2, 3, 14, 30, 0), Note = "Grocery shopping", TransactionId = 1, CategoryId = 1, TransactionTypeId = 2 },
+                new Detail { Id = 51, Amount = -50.00m, TransactionDate = new DateTime(2025, 2, 5, 8, 0, 0), Note = "Electricity bill payment", TransactionId = 2, CategoryId = 2, TransactionTypeId = 2 },
+                new Detail { Id = 52, Amount = 2100.00m, TransactionDate = new DateTime(2025, 2, 10, 9, 0, 0), Note = "February salary", TransactionId = 3, CategoryId = 3, TransactionTypeId = 3 },
+                new Detail { Id = 53, Amount = -300.00m, TransactionDate = new DateTime(2025, 2, 7, 12, 15, 0), Note = "Car loan payment", TransactionId = 4, CategoryId = 4, TransactionTypeId = 2 },
+                new Detail { Id = 54, Amount = -100.00m, TransactionDate = new DateTime(2025, 2, 9, 16, 30, 0), Note = "Internet subscription", TransactionId = 5, CategoryId = 5, TransactionTypeId = 2 },
+                new Detail { Id = 55, Amount = -1200.00m, TransactionDate = new DateTime(2025, 2, 12, 11, 0, 0), Note = "Gym membership annual fee", TransactionId = 6, CategoryId = 6, TransactionTypeId = 2 },
+                new Detail { Id = 56, Amount = -20.00m, TransactionDate = new DateTime(2025, 2, 15, 10, 30, 0), Note = "Netflix subscription fee", TransactionId = 7, CategoryId = 7, TransactionTypeId = 2 },
+                new Detail { Id = 57, Amount = -130.00m, TransactionDate = new DateTime(2025, 2, 18, 14, 0, 0), Note = "Charity donation", TransactionId = 8, CategoryId = 8, TransactionTypeId = 9 },
+                new Detail { Id = 58, Amount = -800.00m, TransactionDate = new DateTime(2025, 2, 21, 13, 45, 0), Note = "House rent for February", TransactionId = 9, CategoryId = 9, TransactionTypeId = 2 },
+                new Detail { Id = 59, Amount = -50.00m, TransactionDate = new DateTime(2025, 2, 25, 18, 30, 0), Note = "Supermarket shopping", TransactionId = 1, CategoryId = 1, TransactionTypeId = 2 }
             );
             
             modelBuilder.Entity<TransactionType>().HasData(

@@ -12,7 +12,7 @@ namespace AccountingApp.API.Templates
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class GenericHubController<TEntity, TService, TCreateForm, TUpdateForm, THub>
+	public class GenericHubController<TEntity, TCreateForm, TUpdateForm, THub>
 
         /********** Dependecy injections **********/
 
@@ -28,7 +28,6 @@ namespace AccountingApp.API.Templates
         /********** Generic characteristics **********/
 
         where TEntity : class, IIdentifiable
-		where TService : class, IService<TEntity, TCreateForm, TUpdateForm>
 		where TCreateForm : class, IConvertibleToEntity<TEntity, TCreateForm>
 		where TUpdateForm : class, IConvertibleToEntity<TEntity, TUpdateForm>, IIdentifiable
 		where THub : Hub

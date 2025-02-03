@@ -13,7 +13,7 @@ namespace AccountingApp.DB.Migrations
 {
     [DbContext(typeof(MainContext))]
     [Migration("20250131071310_migration3")]
-    partial class migration3
+    partial class Migration3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

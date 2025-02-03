@@ -320,6 +320,506 @@ namespace AccountingApp.DB.Migrations
                             TransactionDate = new DateTime(2024, 10, 24, 16, 14, 0, 0, DateTimeKind.Unspecified),
                             TransactionId = 9,
                             TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Amount = -250.00m,
+                            CategoryId = 1,
+                            Note = "Supermarket shopping",
+                            TransactionDate = new DateTime(2024, 2, 10, 14, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Amount = -120.00m,
+                            CategoryId = 2,
+                            Note = "Electricity bill payment",
+                            TransactionDate = new DateTime(2024, 2, 15, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Amount = 2500.00m,
+                            CategoryId = 3,
+                            Note = "February salary",
+                            TransactionDate = new DateTime(2024, 2, 20, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 3,
+                            TransactionTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Amount = -400.00m,
+                            CategoryId = 4,
+                            Note = "Car loan payment",
+                            TransactionDate = new DateTime(2024, 3, 5, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Amount = -60.00m,
+                            CategoryId = 5,
+                            Note = "Internet subscription",
+                            TransactionDate = new DateTime(2024, 3, 10, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 5,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Amount = -1300.00m,
+                            CategoryId = 6,
+                            Note = "Gym membership annual fee",
+                            TransactionDate = new DateTime(2024, 2, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 6,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Amount = -20.00m,
+                            CategoryId = 7,
+                            Note = "Netflix subscription fee",
+                            TransactionDate = new DateTime(2024, 3, 1, 8, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 7,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Amount = -150.00m,
+                            CategoryId = 8,
+                            Note = "Charity donation",
+                            TransactionDate = new DateTime(2024, 3, 15, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 8,
+                            TransactionTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Amount = -850.00m,
+                            CategoryId = 9,
+                            Note = "February house rent",
+                            TransactionDate = new DateTime(2024, 3, 10, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 9,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Amount = -500.00m,
+                            CategoryId = 4,
+                            Note = "Car insurance payment",
+                            TransactionDate = new DateTime(2024, 3, 20, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Amount = -300.00m,
+                            CategoryId = 1,
+                            Note = "Supermarket shopping",
+                            TransactionDate = new DateTime(2024, 3, 25, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Amount = -200.00m,
+                            CategoryId = 2,
+                            Note = "Electricity bill payment",
+                            TransactionDate = new DateTime(2024, 4, 1, 10, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Amount = 2200.00m,
+                            CategoryId = 3,
+                            Note = "March salary",
+                            TransactionDate = new DateTime(2024, 4, 5, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 3,
+                            TransactionTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Amount = -350.00m,
+                            CategoryId = 4,
+                            Note = "Car loan payment",
+                            TransactionDate = new DateTime(2024, 4, 10, 15, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Amount = -70.00m,
+                            CategoryId = 5,
+                            Note = "Internet subscription",
+                            TransactionDate = new DateTime(2024, 4, 15, 12, 45, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 5,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Amount = -1400.00m,
+                            CategoryId = 6,
+                            Note = "Gym membership annual fee",
+                            TransactionDate = new DateTime(2024, 3, 1, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 6,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Amount = -25.00m,
+                            CategoryId = 7,
+                            Note = "Netflix subscription fee",
+                            TransactionDate = new DateTime(2024, 4, 1, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 7,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Amount = -120.00m,
+                            CategoryId = 8,
+                            Note = "Charity donation",
+                            TransactionDate = new DateTime(2024, 4, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 8,
+                            TransactionTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Amount = -900.00m,
+                            CategoryId = 9,
+                            Note = "February house rent",
+                            TransactionDate = new DateTime(2024, 4, 1, 16, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 9,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Amount = -400.00m,
+                            CategoryId = 4,
+                            Note = "Car insurance payment",
+                            TransactionDate = new DateTime(2024, 4, 15, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Amount = -250.00m,
+                            CategoryId = 1,
+                            Note = "Restaurant dining",
+                            TransactionDate = new DateTime(2024, 3, 20, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Amount = -180.00m,
+                            CategoryId = 2,
+                            Note = "Electricity bill payment",
+                            TransactionDate = new DateTime(2024, 3, 22, 14, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Amount = 2500.00m,
+                            CategoryId = 3,
+                            Note = "April salary",
+                            TransactionDate = new DateTime(2024, 4, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 3,
+                            TransactionTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Amount = -350.00m,
+                            CategoryId = 4,
+                            Note = "Car loan payment",
+                            TransactionDate = new DateTime(2024, 4, 5, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Amount = -60.00m,
+                            CategoryId = 5,
+                            Note = "Internet subscription",
+                            TransactionDate = new DateTime(2024, 4, 7, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 5,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Amount = -1300.00m,
+                            CategoryId = 6,
+                            Note = "Gym membership annual fee",
+                            TransactionDate = new DateTime(2024, 4, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 6,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Amount = -30.00m,
+                            CategoryId = 7,
+                            Note = "Netflix subscription fee",
+                            TransactionDate = new DateTime(2024, 4, 8, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 7,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Amount = -110.00m,
+                            CategoryId = 8,
+                            Note = "Charity donation",
+                            TransactionDate = new DateTime(2024, 4, 10, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 8,
+                            TransactionTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Amount = -950.00m,
+                            CategoryId = 9,
+                            Note = "March house rent",
+                            TransactionDate = new DateTime(2024, 4, 12, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 9,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Amount = -500.00m,
+                            CategoryId = 4,
+                            Note = "Car insurance payment",
+                            TransactionDate = new DateTime(2024, 4, 18, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Amount = -200.00m,
+                            CategoryId = 1,
+                            Note = "Grocery shopping",
+                            TransactionDate = new DateTime(2024, 4, 25, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Amount = -90.00m,
+                            CategoryId = 2,
+                            Note = "Electricity bill payment",
+                            TransactionDate = new DateTime(2024, 4, 28, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Amount = 2200.00m,
+                            CategoryId = 3,
+                            Note = "May salary",
+                            TransactionDate = new DateTime(2024, 5, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 3,
+                            TransactionTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Amount = -400.00m,
+                            CategoryId = 4,
+                            Note = "Car loan payment",
+                            TransactionDate = new DateTime(2024, 5, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Amount = -65.00m,
+                            CategoryId = 5,
+                            Note = "Internet subscription",
+                            TransactionDate = new DateTime(2024, 5, 7, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 5,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Amount = -1400.00m,
+                            CategoryId = 6,
+                            Note = "Gym membership annual fee",
+                            TransactionDate = new DateTime(2024, 5, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 6,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Amount = -35.00m,
+                            CategoryId = 7,
+                            Note = "Netflix subscription fee",
+                            TransactionDate = new DateTime(2024, 5, 8, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 7,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Amount = -120.00m,
+                            CategoryId = 8,
+                            Note = "Charity donation",
+                            TransactionDate = new DateTime(2024, 5, 10, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 8,
+                            TransactionTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Amount = -1000.00m,
+                            CategoryId = 9,
+                            Note = "April house rent",
+                            TransactionDate = new DateTime(2024, 5, 12, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 9,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Amount = -450.00m,
+                            CategoryId = 4,
+                            Note = "Car insurance payment",
+                            TransactionDate = new DateTime(2024, 5, 18, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Amount = -120.00m,
+                            CategoryId = 1,
+                            Note = "Grocery shopping",
+                            TransactionDate = new DateTime(2025, 2, 3, 14, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Amount = -50.00m,
+                            CategoryId = 2,
+                            Note = "Electricity bill payment",
+                            TransactionDate = new DateTime(2025, 2, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Amount = 2100.00m,
+                            CategoryId = 3,
+                            Note = "February salary",
+                            TransactionDate = new DateTime(2025, 2, 10, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 3,
+                            TransactionTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Amount = -300.00m,
+                            CategoryId = 4,
+                            Note = "Car loan payment",
+                            TransactionDate = new DateTime(2025, 2, 7, 12, 15, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 4,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Amount = -100.00m,
+                            CategoryId = 5,
+                            Note = "Internet subscription",
+                            TransactionDate = new DateTime(2025, 2, 9, 16, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 5,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Amount = -1200.00m,
+                            CategoryId = 6,
+                            Note = "Gym membership annual fee",
+                            TransactionDate = new DateTime(2025, 2, 12, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 6,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Amount = -20.00m,
+                            CategoryId = 7,
+                            Note = "Netflix subscription fee",
+                            TransactionDate = new DateTime(2025, 2, 15, 10, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 7,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Amount = -130.00m,
+                            CategoryId = 8,
+                            Note = "Charity donation",
+                            TransactionDate = new DateTime(2025, 2, 18, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 8,
+                            TransactionTypeId = 9
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Amount = -800.00m,
+                            CategoryId = 9,
+                            Note = "House rent for February",
+                            TransactionDate = new DateTime(2025, 2, 21, 13, 45, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 9,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Amount = -50.00m,
+                            CategoryId = 1,
+                            Note = "Supermarket shopping",
+                            TransactionDate = new DateTime(2025, 2, 25, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            TransactionId = 1,
+                            TransactionTypeId = 2
                         });
                 });
 

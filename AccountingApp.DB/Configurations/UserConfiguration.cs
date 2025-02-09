@@ -15,8 +15,7 @@ namespace AccountingApp.DAL.Contexts
         public void Configure(EntityTypeBuilder<User> builder)
         {
             /********** Tables **********/
-
-            // CaseSensitive « \"\" »
+            
             builder.ToTable("User");
 
             /********** Properties **********/
@@ -33,6 +32,7 @@ namespace AccountingApp.DAL.Contexts
 
 
             /********** NOTE **********/
+
             // If the primary key name is Id, the methods below are not necessary.
             // builder.Property(u => u.Id).ValueGeneratedOnAdd();
 
@@ -42,6 +42,8 @@ namespace AccountingApp.DAL.Contexts
             //    .WithOne(a => a.User)
             //    .HasForeignKey(a => a.UserId)
             //    .HasPrincipalKey(u => u.Id);
+
+            // CaseSensitive « \"\" »
         }
     }
 }

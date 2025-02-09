@@ -68,15 +68,15 @@ namespace AccountingApp.DB.Contexts
             );
             
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Groceries", TransactionDetailId = 1 },
-                new Category { Id = 2, Name = "Utilities", TransactionDetailId = 2 },
-                new Category { Id = 3, Name = "Rent", TransactionDetailId = 3 },
-                new Category { Id = 4, Name = "Entertainment", TransactionDetailId = 4 },
-                new Category { Id = 5, Name = "Transportation", TransactionDetailId = 5 },
-                new Category { Id = 6, Name = "Healthcare", TransactionDetailId = 6 },
-                new Category { Id = 7, Name = "Education", TransactionDetailId = 7 },
-                new Category { Id = 8, Name = "Savings", TransactionDetailId = 8 },
-                new Category { Id = 9, Name = "Travel", TransactionDetailId = 9 }
+                new Category { Id = 1, Name = "Groceries" },
+                new Category { Id = 2, Name = "Utilities" },
+                new Category { Id = 3, Name = "Rent" },
+                new Category { Id = 4, Name = "Entertainment" },
+                new Category { Id = 5, Name = "Transportation" },
+                new Category { Id = 6, Name = "Healthcare" },
+                new Category { Id = 7, Name = "Education" },
+                new Category { Id = 8, Name = "Savings" },
+                new Category { Id = 9, Name = "Travel" }
             );
 
             modelBuilder.Entity<Detail>().HasData(

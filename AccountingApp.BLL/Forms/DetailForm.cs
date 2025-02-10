@@ -11,24 +11,48 @@ using AccountingApp.TL.Templates;
 
 namespace AccountingApp.BLL.Forms
 {
-    public class DetailCreateForm : IConvertibleToEntity<Detail, DetailCreateForm>
+    public class TransactionCreateAllForm
     {
         [Required]
+        public string Name { get; set; } = string.Empty;
+		[Required]
         public decimal Amount { get; set; }
-
         [Required]
+        public int Reptetion { get; set; }
+		[Required]
         public DateTime TransactionDate { get; set; }
-
-        public string Note { get; set; } = string.Empty;
-
-        [Required]
-        public int TransactionId { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [Required]
         public int TransactionTypeId { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
+
+		public string Note { get; set; } = string.Empty;
+		[Required]
+		public int AccountId { get; set; }
+		[Required]
+		public int UserId { get; set; }
+	}
+
+	public class DetailCreateForm : IConvertibleToEntity<Detail, DetailCreateForm>
+	{
+		[Required]
+		public decimal Amount { get; set; }
+
+		[Required]
+		public DateTime TransactionDate { get; set; }
+
+		public string Note { get; set; } = string.Empty;
+
+		[Required]
+		public int TransactionId { get; set; }
+
+		[Required]
+		public int CategoryId { get; set; }
+
+		[Required]
+		public int TransactionTypeId { get; set; }
 
 		public Detail ToEntity(DetailCreateForm form)
 		{
@@ -44,7 +68,7 @@ namespace AccountingApp.BLL.Forms
 		}
 	}
 
-    public class DetailGetForm
+	public class DetailGetForm
     {
         public string? Name { get; set; }
         public int? CategoryId { get; set; }

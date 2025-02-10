@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AccountingApp.DB.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20250209091706_Migration6")]
-    partial class Migration6
+    [Migration("20250210132620_Migration1")]
+    partial class Migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

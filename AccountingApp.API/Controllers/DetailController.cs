@@ -21,6 +21,32 @@ namespace AccountingApp.API.Controllers
         (IDetailService service, IHubContext<DetailHub> hub)
         : GenericHubController<Detail, DetailCreateForm, DetailUpdateForm, DetailHub>(service, hub), IDetailController
 	{
+		[HttpPost("detailtransaction")]
+		[ProducesResponseType(StatusCodes.Status201Created)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public async Task<IActionResult> Create([FromBody] DetailTransactionCreateForm form)
+		{
+			try
+			{
+				Detail? createdEntity = service.Create(form);
+
+				if (createdEntity is null) throw new OperationFailedException("Creation failed.");
+
+				await hub.Clients.All.SendAsync("ReceiveCreateDetail", createdEntity);
+
+				return Created($"api/detail/{createdEntity.Id}", createdEntity);
+			}
+			catch (OperationFailedException ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
 		[HttpGet("filtered")]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -40,7 +66,7 @@ namespace AccountingApp.API.Controllers
 			try
 			{
 				IEnumerable<Detail> foundDetails = service.Get(form);
-				await hub.Clients.All.SendAsync("ReceiveGet", foundDetails);
+				await hub.Clients.All.SendAsync("ReceiveGetDetail", foundDetails);
 
 				return Ok(foundDetails);
 			}

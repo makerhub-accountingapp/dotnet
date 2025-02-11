@@ -21,8 +21,8 @@ namespace AccountingApp.BLL.Interfaces
 		/// <summary>
 		/// Retrieves entities that match the given condition.
 		/// </summary>
-		/// <param name="detail">Condition to filter entities (optional).</param>
+		/// <param name="form">Condition to filter entities (optional).</param>
 		/// <returns>A collection of matching entities.</returns>
-		public IEnumerable<Detail> Get(DetailGetForm detail);
+		public IEnumerable<Detail> Get(DetailGetForm form);
 	}
 }

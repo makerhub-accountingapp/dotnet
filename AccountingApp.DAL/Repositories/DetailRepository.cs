@@ -15,17 +15,17 @@ namespace AccountingApp.DAL.Repositories
 	{
         public override IEnumerable<Detail> Get()
         {
-                return Entities.Include(d => d.Transaction).OrderByDescending(d => d.TransactionDate);
+                return Entities.Include(d => d.Transaction).Include(d => d.Category).OrderByDescending(d => d.TransactionDate);
         }
 
         public override IEnumerable<Detail> Get(Func<Detail, bool> predicate)
 		{
-			return Entities.Include(d => d.Transaction).Where(predicate).OrderByDescending(d => d.TransactionDate);
+			return Entities.Include(d => d.Transaction).Include(d => d.Category).Where(predicate).OrderByDescending(d => d.TransactionDate);
 		}
 
 		public override Detail? GetOne(Func<Detail, bool> predicate)
 		{
-			return Entities.Include(d => d.Transaction).FirstOrDefault(predicate);
+			return Entities.Include(d => d.Transaction).Include(d => d.Category).FirstOrDefault(predicate);
 		}
 	}
 }

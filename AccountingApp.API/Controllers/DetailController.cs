@@ -51,12 +51,13 @@ namespace AccountingApp.API.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
+		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
 		{
 			DetailGetForm form = new DetailGetForm()
 			{
 				Name = name,
 				CategoryId = categoryId,
+				TransactionId = transactionId,
 				TransactionTypeId = transactionTypeId,
 				Repetition = repetition,
 				StartDate = startDate,

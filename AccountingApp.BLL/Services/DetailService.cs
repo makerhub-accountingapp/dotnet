@@ -76,6 +76,7 @@ namespace AccountingApp.BLL.Services
 			Func<Detail, bool> predicate = (d) => 
 				(form.Name is null || d.Transaction.Name == form.Name) &&
 				(form.CategoryId is null || d.CategoryId == form.CategoryId) &&
+				(form.TransactionId is null || d.TransactionId == form.TransactionId) &&
 				(form.TransactionTypeId is null || d.TransactionTypeId == form.TransactionTypeId) &&
 				(form.Repetition is null || d.Transaction.Repetition == form.Repetition) &&
 				(form.StartDate is null || form.EndDate is null) ||

@@ -13,5 +13,16 @@ namespace AccountingApp.DAL.Repositories
 {
 	public class UserRepository(MainContext context) : Repository<User>(context), IUserRepository
 	{
-	}
+        public override User? GetOne(Func<User, bool> predicate)
+        {
+            if (predicate is not null)
+            {
+                return Entities.Include(u => u.Accounts).FirstOrDefault(predicate);
+            }
+            else
+            {
+                return Entities.Include(u => u.Accounts).FirstOrDefault();
+            }
+        }
+    }
 }

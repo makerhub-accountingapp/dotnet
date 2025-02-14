@@ -11,7 +11,13 @@ using OnlineRestaurant.TL.Templates;
 
 namespace AccountingApp.BLL.Services
 {
-	public class UserService(IUserRepository repo) : Service<User, UserCreateForm, UserUpdateForm>(repo), IUserService
-	{
-	}
+    public class UserService(IUserRepository repo) : Service<User, UserCreateForm, UserUpdateForm>(repo), IUserService
+    {
+        public User? Login(string email, string password)
+        {
+            Func<User, bool> predicate = u => u.Email == email && u.Password == password;
+
+            return repo.GetOne(predicate);
+        }
+    }
 }

@@ -73,6 +73,7 @@ namespace AccountingApp.BLL.Forms
         public int? TransactionId { get; set; }
         public int? TransactionTypeId { get; set; }
         public RepetitionEnum? Repetition { get; set; }
+		public int? AccountId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }

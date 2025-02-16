@@ -51,7 +51,7 @@ namespace AccountingApp.API.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Detail>))]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate)
+		public async Task<IActionResult> Get(string? name, int? categoryId, int? transactionId, int? transactionTypeId, RepetitionEnum? repetition, int? accountId, DateTime? startDate, DateTime? endDate)
 		{
 			DetailGetForm form = new DetailGetForm()
 			{
@@ -60,8 +60,9 @@ namespace AccountingApp.API.Controllers
 				TransactionId = transactionId,
 				TransactionTypeId = transactionTypeId,
 				Repetition = repetition,
+				AccountId = accountId,
 				StartDate = startDate,
-				EndDate = endDate
+				EndDate = endDate,
 			};
 
 			try

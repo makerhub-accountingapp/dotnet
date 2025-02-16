@@ -73,14 +73,15 @@ namespace AccountingApp.BLL.Services
 
 		public IEnumerable<Detail> Get(DetailGetForm form)
 		{
-			Func<Detail, bool> predicate = (d) => 
+			Func<Detail, bool> predicate = (d) =>
 				(form.Name is null || d.Transaction.Name == form.Name) &&
 				(form.CategoryId is null || d.CategoryId == form.CategoryId) &&
 				(form.TransactionId is null || d.TransactionId == form.TransactionId) &&
 				(form.TransactionTypeId is null || d.TransactionTypeId == form.TransactionTypeId) &&
 				(form.Repetition is null || d.Transaction.Repetition == form.Repetition) &&
-				(form.StartDate is null || form.EndDate is null) ||
-				(d.TransactionDate >= form.StartDate && d.TransactionDate <= form.EndDate);
+				(form.AccountId is null || d.Transaction.AccountId == form.AccountId) &&
+				((form.StartDate is null || form.EndDate is null) ||
+				(d.TransactionDate >= form.StartDate && d.TransactionDate <= form.EndDate));
 
 			return base.Get(predicate);
 		}		

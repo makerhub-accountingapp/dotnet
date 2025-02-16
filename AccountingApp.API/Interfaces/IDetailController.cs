@@ -23,9 +23,10 @@ namespace AccountingApp.API.Interfaces
 		/// <param name="transactionId">Transaction id</param>
 		/// <param name="transactionTypeId">Transaction type id</param>
 		/// <param name="repetition">Repetition enum</param>
+		/// <param name="accountId">Account id</param>
 		/// <param name="startDate">Starting date of the transaction</param>
 		/// <param name="endDate">Ending date of the transaction</param>
 		/// <returns>A task representing the asynchronous operation. The task result contains a collection of all entities.</returns>
-		Task<IActionResult> Get(string? name, int? categoryId, int? transactionId, int? transactionTypeId, RepetitionEnum? repetition, DateTime? startDate, DateTime? endDate);
+		Task<IActionResult> Get(string? name, int? categoryId, int? transactionId, int? transactionTypeId, RepetitionEnum? repetition, int? accountId, DateTime? startDate, DateTime? endDate);
     }
 }

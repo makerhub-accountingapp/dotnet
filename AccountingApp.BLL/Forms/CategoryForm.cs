@@ -13,12 +13,15 @@ namespace AccountingApp.BLL.Forms
     {
         [Required]
         public string Name { get; set; } = string.Empty;
+		[Required]
+		public int UserId { get; set; }
 
         public Category ToEntity(CategoryCreateForm form)
         {
             return new Category
             {
-                Name = form.Name
+                Name = form.Name,
+                UserId = form.UserId
             };
         }
     }
@@ -29,13 +32,16 @@ namespace AccountingApp.BLL.Forms
         public int Id { get; set; }
         [Required]
         public string Name { get; set; } = string.Empty;
+		[Required]
+        public int UserId { get; set; }
 
-        public Category ToEntity(CategoryUpdateForm form)
+		public Category ToEntity(CategoryUpdateForm form)
         {
             return new Category
             {
                 Id = form.Id,
-                Name = form.Name
+                Name = form.Name,
+                UserId = form.UserId
             };
         }
     }

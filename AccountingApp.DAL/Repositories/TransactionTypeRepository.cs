@@ -12,5 +12,9 @@ namespace AccountingApp.DAL.Repositories
 {
     public class TransactionTypeRepository(MainContext context) : Repository<TransactionType>(context), ITransactionTypeRepository
     {
-    }
+		public override IEnumerable<TransactionType> Get(Func<TransactionType, bool> predicate)
+		{
+			return Entities.Order().Where(predicate);
+		}
+	}
 }

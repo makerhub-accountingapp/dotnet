@@ -68,15 +68,15 @@ namespace AccountingApp.DB.Contexts
             );
             
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Groceries" },
-                new Category { Id = 2, Name = "Utilities" },
-                new Category { Id = 3, Name = "Rent" },
-                new Category { Id = 4, Name = "Entertainment" },
-                new Category { Id = 5, Name = "Transportation" },
-                new Category { Id = 6, Name = "Healthcare" },
-                new Category { Id = 7, Name = "Education" },
-                new Category { Id = 8, Name = "Savings" },
-                new Category { Id = 9, Name = "Travel" }
+                new Category { Id = 1, Name = "Groceries", UserId = 1 },
+                new Category { Id = 2, Name = "Utilities", UserId = 1 },
+                new Category { Id = 3, Name = "Rent", UserId = 1 },
+                new Category { Id = 4, Name = "Entertainment", UserId = 1 },
+                new Category { Id = 5, Name = "Transportation", UserId = 1 },
+                new Category { Id = 6, Name = "Healthcare", UserId = 1 },
+                new Category { Id = 7, Name = "Education", UserId = 1 },
+                new Category { Id = 8, Name = "Savings", UserId = 1 },
+                new Category { Id = 9, Name = "Travel", UserId = 1 }
             );
 
             modelBuilder.Entity<Detail>().HasData(
@@ -142,15 +142,15 @@ namespace AccountingApp.DB.Contexts
             );
             
             modelBuilder.Entity<TransactionType>().HasData(
-                new TransactionType { Id = 1, Name = "One-Time Payment" },
-                new TransactionType { Id = 2, Name = "Monthly Payment" },
-                new TransactionType { Id = 3, Name = "Savings for payment" },
-                new TransactionType { Id = 4, Name = "Travel" },
-                new TransactionType { Id = 5, Name = "Wedding" },
-                new TransactionType { Id = 6, Name = "Education" },
-                new TransactionType { Id = 7, Name = "Kids" },
-                new TransactionType { Id = 8, Name = "Gifts" },
-                new TransactionType { Id = 9, Name = "Entertainment" }
+                new TransactionType { Id = 1, Name = "One-Time Payment", UserId = 1 },
+                new TransactionType { Id = 2, Name = "Monthly Payment", UserId = 1 },
+                new TransactionType { Id = 3, Name = "Savings for payment", UserId = 1 },
+                new TransactionType { Id = 4, Name = "Travel", UserId = 1 },
+                new TransactionType { Id = 5, Name = "Wedding", UserId = 1 },
+                new TransactionType { Id = 6, Name = "Education", UserId = 1 },
+                new TransactionType { Id = 7, Name = "Kids", UserId = 1 },
+                new TransactionType { Id = 8, Name = "Gifts", UserId = 1 },
+                new TransactionType { Id = 9, Name = "Entertainment", UserId = 1 }
             );
         }
     }

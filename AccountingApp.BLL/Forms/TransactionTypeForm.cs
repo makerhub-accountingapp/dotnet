@@ -13,12 +13,15 @@ namespace AccountingApp.BLL.Forms
     {
         [Required]
         public string Name { get; set; } = string.Empty;
+		[Required]
+		public int UserId { get; set; }
 
-        public TransactionType ToEntity(TransactionTypeCreateForm form)
+		public TransactionType ToEntity(TransactionTypeCreateForm form)
         {
             return new TransactionType
             {
                 Name = form.Name,
+                UserId = form.UserId
             };
         }
     }
@@ -30,14 +33,17 @@ namespace AccountingApp.BLL.Forms
 
         [Required]
         public string Name { get; set; } = string.Empty;
+		[Required]
+		public int UserId { get; set; }
 
-        public TransactionType ToEntity(TransactionTypeUpdateForm form)
+		public TransactionType ToEntity(TransactionTypeUpdateForm form)
         {
             return new TransactionType
             {
                 Id = form.Id,
                 Name = form.Name,
-            };
+				UserId = form.UserId
+			};
         }
     }
 }

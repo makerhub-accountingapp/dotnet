@@ -14,5 +14,7 @@ namespace AccountingApp.DB.Entities
         public string Password { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
         public List<Account> Accounts { get; set; } = new List<Account>();
+        public List<TransactionType> TransactionTypes { get; set; } = new List<TransactionType>();
+        public List<Category> Categories { get; set; } = new List<Category>();
     }
 }

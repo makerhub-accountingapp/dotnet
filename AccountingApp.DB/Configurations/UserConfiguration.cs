@@ -30,6 +30,14 @@ namespace AccountingApp.DAL.Contexts
                 .WithOne(a => a.User)
                 .HasForeignKey(a => a.UserId);
 
+            builder.HasMany(u => u.Categories)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.UserId);
+
+            builder.HasMany(u => u.TransactionTypes)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId);
+
 
             /********** NOTE **********/
 

@@ -13,5 +13,10 @@ namespace AccountingApp.BLL.Services
 {
     public class TransactionTypeService(ITransactionTypeRepository repo) : Service<TransactionType, TransactionTypeCreateForm,  TransactionTypeUpdateForm>(repo), ITransactionTypeService
     {
-    }
+		public IEnumerable<TransactionType> Get(int userId)
+		{
+			Func<TransactionType, bool> predicate = c => c.UserId == userId;
+			return base.Get(predicate);
+		}
+	}
 }

@@ -13,5 +13,10 @@ namespace AccountingApp.BLL.Services
 {
     public class CategoryService(ICategoryRepository repo) : Service<Category, CategoryCreateForm, CategoryUpdateForm>(repo), ICategoryService
     {
-    }
+		public IEnumerable<Category> Get(int userId)
+		{
+			Func<Category, bool> predicate = c => c.UserId == userId;
+			return base.Get(predicate);
+		}
+	}
 }

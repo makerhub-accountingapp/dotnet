@@ -13,5 +13,10 @@ namespace AccountingApp.BLL.Services
 {
 	public class AccountService(IAccountRepository repo) : Service<Account, AccountCreateForm,  AccountUpdateForm>(repo), IAccountService
 	{
+		public IEnumerable<Account> Get(int userId)
+		{
+			Func<Account, bool> predicate = a => a.UserId == userId;
+			return base.Get(predicate);
+		}
 	}
 }
